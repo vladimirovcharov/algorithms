@@ -1,4 +1,4 @@
-package algorithms.Chap03.BubbleSort;
+package Chap03.BubbleSort;
 
 // bubbleSort.java
 // demonstrates bubble sort

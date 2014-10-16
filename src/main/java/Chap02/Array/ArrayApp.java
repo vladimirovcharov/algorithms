@@ -10,7 +10,7 @@ class ArrayApp
     {
         long[] arr;                  // reference to array
         arr = new long[100];         // make array
-        int nElems = 0;              // number of items
+        int nElems;              // number of items
         int j;                       // loop counter
         long searchKey;              // key of item to search for
 //--------------------------------------------------------------
@@ -21,7 +21,7 @@ class ArrayApp
         arr[4] = 22;
         arr[5] = 88;
         arr[6] = 11;
-        arr[7] = 00;
+        arr[7] = 0;
         arr[8] = 66;
         arr[9] = 33;
         nElems = 10;                 // now 10 items in array

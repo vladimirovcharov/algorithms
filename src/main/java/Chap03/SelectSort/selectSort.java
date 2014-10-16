@@ -1,3 +1,5 @@
+package Chap03.SelectSort;
+
 // selectSort.java
 // demonstrates selection sort
 // to run this program: C>java SelectSortApp
@@ -64,7 +66,7 @@ class SelectSortApp
       arr.insert(22);
       arr.insert(88);
       arr.insert(11);
-      arr.insert(00);
+      arr.insert(0);
       arr.insert(66);
       arr.insert(33);
 
