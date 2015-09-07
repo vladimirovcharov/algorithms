@@ -1,26 +1,25 @@
-package algorithms.Chap01.Bank;
+package Chap01.Bank;
 
-class BankAccount
-{
-    private double balance;                   // account balance
+class BankAccount {
+    // account balance
+    private double balance;
 
-    public BankAccount(double openingBalance) // constructor
-    {
+    public BankAccount(double openingBalance) {
         balance = openingBalance;
     }
 
-    public void deposit(double amount)        // makes deposit
-    {
+    // makes deposit
+    public void deposit(double amount) {
         balance = balance + amount;
     }
 
-    public void withdraw(double amount)       // makes withdrawal
-    {
+    // makes withdrawal
+    public void withdraw(double amount) {
         balance = balance - amount;
     }
 
-    public void display()                     // displays balance
-    {
+    // displays balance
+    public void display() {
         System.out.println("balance=" + balance);
     }
-}  // end class BankAccount
+}
