@@ -1,5 +1,7 @@
 package Chap02.HighArray;
 
+import java.util.Arrays;
+
 // highArray.java
 // demonstrates array class with high-level interface
 // to run this program: C>java HighArrayApp
@@ -77,6 +79,23 @@ class HighArray
        public int getLength() {
            return nElems;
        }
+
+      public void removeDups() {
+         int l = a.length;
+         for (int i = 0; i < a.length; i++) {
+            for (int j = i + 1; j < a.length; j++) {
+               if (a[i] == a[j] && a[i] != Long.MAX_VALUE) {
+                  a[j] = Long.MAX_VALUE;
+                  l--;
+               }
+            }
+         }
+         Arrays.sort(a);
+         long[] result = Arrays.copyOf(a, l);
+         for (long i : result) {
+            System.out.print(i + " ");
+         }
+      }
        //-----------------------------------------------------------
    }  // end class HighArray
 ////////////////////////////////////////////////////////////////
@@ -128,9 +147,28 @@ class HighArrayApp
               newArray[i] = arr.removeMax();
               System.out.print(newArray[i] + " ");
           }
-
+         System.out.println();
           for (int i = newArray.length - 1; i >= 0; i--) {
               System.out.print(newArray[i] + " ");
           }
+         System.out.println();
+         System.out.println("New array: ");
+         arr = new HighArray(12);
+         arr.insert(3);
+         arr.insert(11);
+         arr.insert(3);
+         arr.insert(8);
+         arr.insert(11);
+         arr.insert(99);
+         arr.insert(33);
+         arr.insert(11);
+         arr.insert(99);
+         arr.insert(25);
+         arr.insert(46);
+         arr.insert(99);
+         arr.display();
+         System.out.println("Removing dups....");
+         arr.removeDups();
+
       }  // end main()
    }  // end class HighArrayApp
