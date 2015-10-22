@@ -1,8 +1,5 @@
 package Chap02.HighArray;
 
-import java.util.Arrays;
-import java.util.Collections;
-
 // highArray.java
 // demonstrates array class with high-level interface
 // to run this program: C>java HighArrayApp
