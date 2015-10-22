@@ -42,16 +42,38 @@ class OrdArray
       }  // end find()
    //-----------------------------------------------------------
    public void insert(long value)    // put element into array
-      {
-      int j;
-      for(j=0; j<nElems; j++)        // find where it goes
-         if(a[j] > value)            // (linear search)
-            break;
+   {
+//      for(j=0; j<nElems; j++)        // find where it goes
+//         if(a[j] > value)            // (linear search)
+//            break;
+       int j = binaryIndexSearch(value);
       for(int k=nElems; k>j; k--)    // move bigger ones up
          a[k] = a[k-1];
       a[j] = value;                  // insert it
       nElems++;                      // increment size
-      }  // end insert()
+   }  // end insert()
+
+       private int binaryIndexSearch(long value) {
+           if (nElems == 0)
+               return 0;
+           int lowerBound = 0;
+           int upperBound = nElems - 1;
+           int index = 0;
+           while (true) {
+               index = (upperBound + lowerBound) / 2;
+               if (a[index] == value) {
+                   return index;
+               } else if (a[index] < value) {
+                   lowerBound = index + 1;
+                   if (lowerBound > upperBound)
+                       return index + 1;
+               } else {
+                   upperBound = index - 1;
+                   if (lowerBound > upperBound)
+                       return index;
+               }
+           }
+       }
    //-----------------------------------------------------------
    public boolean delete(long value)
       {
@@ -95,18 +117,18 @@ class OrderedApp
       arr.insert(66);
       arr.insert(33);
 
+          arr.display();                 // display items
+
       int searchKey = 55;            // search for item
       if( arr.find(searchKey) != arr.size() )
          System.out.println("Found " + searchKey);
       else
          System.out.println("Can't find " + searchKey);
 
-      arr.display();                 // display items
-
       arr.delete(0);                // delete 3 items
       arr.delete(55);
       arr.delete(99);
-
+          System.out.println("Deleting...");
       arr.display();                 // display items again
       }  // end main()
    }  // end class OrderedApp
