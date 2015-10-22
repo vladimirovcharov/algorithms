@@ -1,5 +1,8 @@
 package Chap02.HighArray;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 // highArray.java
 // demonstrates array class with high-level interface
 // to run this program: C>java HighArrayApp
@@ -68,10 +71,16 @@ class HighArray
          return max;
       }
 
-      public void removeMax() {
-         delete(getMax());
+      public long removeMax() {
+          long max = getMax();
+          delete(max);
+          return max;
       }
-   //-----------------------------------------------------------
+
+       public int getLength() {
+           return nElems;
+       }
+       //-----------------------------------------------------------
    }  // end class HighArray
 ////////////////////////////////////////////////////////////////
 class HighArrayApp
@@ -113,5 +122,18 @@ class HighArrayApp
           arr.display();
           System.out.println("Max is: " + arr.getMax());
 
+          System.out.println("Sorting...");
+
+          int length = arr.getLength();
+          long[] newArray = new long[length];
+
+          for (int i = 0; i < length; i++) {
+              newArray[i] = arr.removeMax();
+              System.out.print(newArray[i] + " ");
+          }
+
+          for (int i = newArray.length - 1; i >= 0; i--) {
+              System.out.print(newArray[i] + " ");
+          }
       }  // end main()
    }  // end class HighArrayApp
