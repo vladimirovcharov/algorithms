@@ -1,5 +1,7 @@
 package Chap02.OrderedArray;
 
+import java.util.Arrays;
+
 // orderedArray.java
 // demonstrates ordered array class
 // to run this program: C>java OrderedApp
@@ -95,6 +97,41 @@ class OrdArray
          System.out.print(a[j] + " ");  // display it
       System.out.println("");
       }
+
+       public static int[] merge(int[] x, int[] y) {
+           int[] result = new int[x.length + y.length];
+
+           int i = 0, j = 0, k = 0;
+
+           while (i < x.length && j < y.length) {
+               if (x[i] < y[j]) {
+                   result[k++] = x[i++];
+               } else {
+                   result[k++] = y[j++];
+               }
+           }
+
+           while (i < x.length) {
+               result[k++] = x[i++];
+           }
+
+           while (j < y.length) {
+               result[k++] = y[j++];
+           }
+
+           return result;
+       }
+
+// maybe the best approach!!
+//       public static int[] merge(int[] a, int[] b) {
+//           int[] answer = new int[a.length + b.length]
+//           int i = a.length - 1, j = b.length - 1, k = answer.length;
+//
+//           while (k > 0)
+//               answer[--k] =
+//                       (j < 0 || (i >= 0 && a[i] >= b[j])) ? a[i--] : b[j--];
+//       return answer;
+//       }
    //-----------------------------------------------------------
    }  // end class OrdArray
 ////////////////////////////////////////////////////////////////
@@ -130,5 +167,37 @@ class OrderedApp
       arr.delete(99);
           System.out.println("Deleting...");
       arr.display();                 // display items again
+
+          System.out.println("------");
+          int[] x = new int[6];
+          int[] y = new int[4];
+
+//          for (int i = 0; i < 10; i++) {
+//              x[i] = (int) (Math.random() * 100);
+//          }
+//
+//          for (int i = 0; i < 15; i++) {
+//              y[i] = (int) (Math.random() * 100);
+//          }
+            x[0] = 1;
+            x[1] = 17;
+            x[2] = 25;
+            x[3] = 36;
+            x[4] = 50;
+            x[5] = 90;
+
+          y[0] = 3;
+          y[1] = 7;
+          y[2] = 9;
+          y[3] = 31;
+
+          System.out.println(Arrays.toString(x));
+          System.out.println(Arrays.toString(y));
+
+          System.out.println("Merging....");
+          int[] mergedArray = OrdArray.merge(x, y);
+
+          System.out.println(Arrays.toString(mergedArray));
+
       }  // end main()
    }  // end class OrderedApp
