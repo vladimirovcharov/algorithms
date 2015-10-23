@@ -42,6 +42,15 @@ class ArraySel {
                     min = in;               // we have a new min
             swap(out, min);                // swap them
         }  // end for(out)
+
+// simple version?
+//        for (int i = 0; i < nElems - 1; i++) {
+//            for (int j = i + 1; j < nElems; j++) {
+//                if (a[j] < a[i]) {
+//                    swap(i, j);
+//                }
+//            }
+//        }
     }  // end selectionSort()
 
     //--------------------------------------------------------------
