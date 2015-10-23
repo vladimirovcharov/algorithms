@@ -32,12 +32,23 @@ class ArrayBub {
 
     //--------------------------------------------------------------
     public void bubbleSort() {
-        int out, in;
+// max to the end
+        for (int i = nElems - 1; i > 1; i--) {
+            for (int j = 0; j < i; j++) {
+                if (a[j] > a[j + 1]) {
+                    swap(j, j+1);
+                }
+            }
+        }
 
-        for (out = nElems - 1; out > 1; out--)   // outer loop (backward)
-            for (in = 0; in < out; in++)        // inner loop (forward)
-                if (a[in] > a[in + 1])       // out of order?
-                    swap(in, in + 1);          // swap them
+// min to start
+//        for (int i = 0; i < nElems; i++) {
+//            for (int j = i + 1; j < nElems; j++) {
+//                if (a[i] > a[j]) {
+//                    swap(i, j);
+//                }
+//            }
+//        }
     }  // end bubbleSort()
 
     //--------------------------------------------------------------
