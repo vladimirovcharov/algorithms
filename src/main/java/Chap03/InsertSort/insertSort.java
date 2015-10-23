@@ -45,16 +45,6 @@ class ArrayIns {
             }
             a[in] = temp;                  // insert marked item
         }  // end for
-
-//        for (int i = 1; i < nElems; i++) {
-//            long temp = a[i];
-//            int j = i;
-//            while (j > 0 && temp <= a[j-1]) {
-//                a[j] = a[j - 1];
-//                j--;
-//            }
-//            a[j] = temp;
-//        }
     }  // end insertionSort()
 //--------------------------------------------------------------
 }  // end class ArrayIns
