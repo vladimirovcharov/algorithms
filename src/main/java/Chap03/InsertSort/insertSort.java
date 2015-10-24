@@ -57,6 +57,17 @@ class ArrayIns {
 //            a[j] = temp;
 //        }
     }  // end insertionSort()
+
+    public long median() {
+        long median;
+        int middle = nElems / 2;
+        if (nElems % 2 == 0) {
+            median = (a[middle] + a[middle - 1]) / 2;
+        } else {
+            median = a[middle];
+        }
+        return median;
+    }
 //--------------------------------------------------------------
 }  // end class ArrayIns
 
@@ -83,5 +94,8 @@ class InsertSortApp {
         arr.insertionSort();          // insertion-sort them
 
         arr.display();                // display them again
+
+        System.out.println("median : " + arr.median());
+
     }  // end main()
 }  // end class InsertSortApp
