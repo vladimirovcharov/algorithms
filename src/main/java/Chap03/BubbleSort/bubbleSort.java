@@ -33,10 +33,18 @@ class ArrayBub {
     //--------------------------------------------------------------
     public void bubbleSort() {
 // max to the end
-        for (int i = nElems - 1; i > 1; i--) {
-            for (int j = 0; j < i; j++) {
+        for (int i = nElems - 1, k = 0; i > k; i--, k++) {
+            int j = 0;
+            while (j < i) {
                 if (a[j] > a[j + 1]) {
                     swap(j, j+1);
+                }
+                j++;
+            }
+
+            for (int m = --j; m > k; m--) {
+                if (a[m] < a[m-1]) {
+                    swap(m, m-1);
                 }
             }
         }
