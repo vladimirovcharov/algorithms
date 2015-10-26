@@ -42,6 +42,7 @@ class ArrayIns {
             in = out;                      // start shifts at out
             while (in > 0 && a[in - 1] >= temp) // until one is smaller,
             {
+                if (temp == a[in - 1]) temp = -1; // each duplicate = -1
                 a[in] = a[in - 1];            // shift item to right
                 --in;                       // go left one position
             }
@@ -106,7 +107,7 @@ class InsertSortApp {
         arr.insert(7);
 
         arr.display();                // display items
-
+        System.out.println("Sorting...");
         arr.insertionSort();          // insertion-sort them
 
         arr.display();                // display them again
