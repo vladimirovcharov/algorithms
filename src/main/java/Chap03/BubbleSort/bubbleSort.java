@@ -1,5 +1,10 @@
 package Chap03.BubbleSort;
 
+import java.util.Calendar;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
 // bubbleSort.java
 // demonstrates bubble sort
 // to run this program: C>java BubbleSortApp
@@ -48,6 +53,39 @@ class ArrayBub {
                     sorted = false;
                 }
             }
+        }
+    }
+
+    public void oddEventParallelSort() {
+        ExecutorService executor = Executors.newFixedThreadPool(8);
+        final boolean[] sorted = {false};
+
+        while (!sorted[0]) {
+            sorted[0] = true;
+
+            executor.submit(() -> {
+                for (int j = 0; j < nElems - 1; j = j + 2) {
+                    if (a[j] > a[j + 1]) {
+                        swap(j, j + 1);
+                        sorted[0] = false;
+                    }
+                }
+            });
+
+            executor.submit(() -> {
+                for (int j = 1; j < nElems - 1; j = j + 2) {
+                    if (a[j] > a[j + 1]) {
+                        swap(j, j + 1);
+                        sorted[0] = false;
+                    }
+                }
+            });
+        }
+        executor.shutdown();
+        try {
+            executor.awaitTermination(1, TimeUnit.DAYS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
@@ -114,10 +152,10 @@ class BubbleSortApp {
         arr.insert(33);
 
         arr.display();                // display items
-
+        System.out.println("Sorting...");
 //        arr.bubbleSort();             // bubble sort them
-        arr.oddEventSort();             // odd event sort
-
+//        arr.oddEventSort();
+        arr.oddEventParallelSort();
         arr.display();                // display them again
     }  // end main()
 }  // end class BubbleSortApp
