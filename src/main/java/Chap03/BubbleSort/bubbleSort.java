@@ -30,25 +30,52 @@ class ArrayBub {
         System.out.println("");
     }
 
-    //--------------------------------------------------------------
+    public void oddEventSort() {
+        boolean sorted = false;
+
+        while (!sorted) {
+            sorted = true;
+            for (int j = 0; j < nElems - 1; j = j + 2) {
+                if (a[j] > a[j + 1]) {
+                    swap(j, j + 1);
+                    sorted = false;
+                }
+            }
+
+            for (int j = 1; j < nElems - 1; j = j + 2) {
+                if (a[j] > a[j + 1]) {
+                    swap(j, j + 1);
+                    sorted = false;
+                }
+            }
+        }
+    }
+
     public void bubbleSort() {
-// max to the end
+// cocktail sort
         for (int i = nElems - 1, k = 0; i > k; i--, k++) {
             int j = 0;
             while (j < i) {
                 if (a[j] > a[j + 1]) {
-                    swap(j, j+1);
+                    swap(j, j + 1);
                 }
                 j++;
             }
 
             for (int m = --j; m > k; m--) {
-                if (a[m] < a[m-1]) {
-                    swap(m, m-1);
+                if (a[m] < a[m - 1]) {
+                    swap(m, m - 1);
                 }
             }
         }
-
+// max to the end
+//        for (int i = nElems - 1; i > 1; i--) {
+//            for (int j = 0; j < i; j++) {
+//                if (a[j] > a[j + 1]) {
+//                    swap(j, j+1);
+//                }
+//            }
+//        }
 // min to start
 //        for (int i = 0; i < nElems; i++) {
 //            for (int j = i + 1; j < nElems; j++) {
@@ -88,7 +115,8 @@ class BubbleSortApp {
 
         arr.display();                // display items
 
-        arr.bubbleSort();             // bubble sort them
+//        arr.bubbleSort();             // bubble sort them
+        arr.oddEventSort();             // odd event sort
 
         arr.display();                // display them again
     }  // end main()
