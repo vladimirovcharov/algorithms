@@ -1,5 +1,7 @@
 package Chap03.InsertSort;
 
+import java.util.Arrays;
+
 // insertSort.java
 // demonstrates insertion sort
 // to run this program: C>java InsertSortApp
@@ -68,6 +70,20 @@ class ArrayIns {
         }
         return median;
     }
+
+    public void noDups() {
+        int j = 0;
+
+        for (int i = 1; i < nElems; i++) {
+            if (a[i] != a[i - 1]) {
+                a[++j] = a[i];
+            }
+        }
+
+        for (int i = 0; i <= j; i++) {
+            System.out.print(a[i] + " ");
+        }
+    }
 //--------------------------------------------------------------
 }  // end class ArrayIns
 
@@ -78,16 +94,16 @@ class InsertSortApp {
         ArrayIns arr;                 // reference to array
         arr = new ArrayIns(maxSize);  // create the array
 
-        arr.insert(77);               // insert 10 items
-        arr.insert(99);
-        arr.insert(44);
-        arr.insert(55);
-        arr.insert(22);
-        arr.insert(88);
-        arr.insert(11);
+        arr.insert(7);               // insert 10 items
+        arr.insert(9);
+        arr.insert(2);
+        arr.insert(5);
+        arr.insert(2);
+        arr.insert(8);
+        arr.insert(7);
         arr.insert(0);
-        arr.insert(66);
-        arr.insert(33);
+        arr.insert(6);
+        arr.insert(7);
 
         arr.display();                // display items
 
@@ -96,6 +112,9 @@ class InsertSortApp {
         arr.display();                // display them again
 
         System.out.println("median : " + arr.median());
+
+        System.out.println("Processing no duplicates...");
+        arr.noDups();
 
     }  // end main()
 }  // end class InsertSortApp
